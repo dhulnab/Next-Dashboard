@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Container } from "../container/container";
 import styles from "./productsTable.module.css";
 import { useAppStore } from "@/store";
+import { IoSearchOutline } from "react-icons/io5";
 
 export const ProductsTable = () => {
   const [products, setProducts] = useState([]);
@@ -24,14 +25,22 @@ export const ProductsTable = () => {
   return (
     <div className={styles.table}>
       <Container>
-        <button onClick={() => setIsOpen(true)}>Add New</button>
+        <div className={styles.searchAddBox}>
+          <button onClick={() => setIsOpen(true)} className={styles.add}>
+            Add New
+          </button>
+          <div className={styles.search}>
+            <input type="text" placeholder="Search" />
+            <IoSearchOutline className={styles.icon} />
+          </div>
+        </div>
         <table>
           <thead>
             <tr>
               <th>ID</th>
               <th>Title</th>
               <th>Price</th>
-              <th>Actions</th>
+              <th className={styles.action}>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -40,9 +49,9 @@ export const ProductsTable = () => {
                 <td>{el.id}</td>
                 <td>{el.title}</td>
                 <td>
-                  <b>{el.price} $</b>
+                  <b className={styles.oneLine}>{el.price} $</b>
                 </td>
-                <td>
+                <td className={styles.action}>
                   <button
                     className={styles.editBtn}
                     onClick={() => {

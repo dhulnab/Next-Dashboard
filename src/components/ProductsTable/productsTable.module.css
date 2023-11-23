@@ -1,13 +1,17 @@
 .table {
-  margin-top: 40px;
+  margin-top: 20px;
+  margin-bottom: 100px;
 }
+
 
 .table table {
   width: 100%;
+
 }
 
 .table table thead {
   background-color: #eee;
+  
 }
 .table table thead th {
   text-align: left;
@@ -26,6 +30,7 @@
   background: #fff;
   border: 1px solid #eee;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .deleteBtn {
@@ -37,6 +42,7 @@
   border: 1px solid #ff0000;
   color: #ff0000;
   margin-left: 8px;
+  cursor: pointer;
   transition: 0.3s;
 }
 
@@ -47,4 +53,76 @@
 .deleteBtn:active,
 .editBtn:active {
   opacity: 0.1;
+}
+.action{
+  display: flex;
+  justify-content: center;
+}
+.add{
+  background-color: rgb(45, 45, 45);
+  font-size: 18px;
+  color: #fff;
+  padding: 10px 12px ;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.add:hover{
+  background-color: rgb(31, 31, 31);
+}
+.add:active{
+  background-color: rgb(26, 26, 26);
+}
+.search input {
+  border: none;
+  outline: none;
+  width: 350px;
+  background-color: transparent;
+  height: 25px;
+  font-size: 16px;
+  color: rgba(46, 46, 46, 0.903);
+}
+.search input ::placeholder {
+  color: rgb(46, 46, 46);
+}
+.search .icon {
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  cursor: pointer;
+}
+.search {
+  background-color: #eee;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  border-radius: 16px;
+  width: 300px;
+}
+.searchAddBox{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 18px 0;
+}
+.oneLine{
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 480px){
+  .searchAddBox{
+    flex-direction: column;
+    justify-content: center;
+  }
+  .search{
+    width: 90%;
+  }
+  .add{
+    width: 90%;
+    position: fixed;
+    bottom: 20px;
+
+  }
+  .table{
+    font-size: 13px;
+  }
 }
