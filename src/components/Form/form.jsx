@@ -5,7 +5,8 @@ import { Modal } from "../Modal/modal";
 import styles from "./form.module.css";
 
 export const From = () => {
-  const { isOpen, setIsOpen, id, title, setTitle, setId } = useAppStore();
+  const { isOpen, setIsOpen, id, title, setTitle, setId, price, setPrice } =
+    useAppStore();
 
   const update = () => {
     fetch(`https://dummyjson.com/products/${id}`, {
@@ -13,10 +14,12 @@ export const From = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         title,
+        price,
       }),
     })
       .then((res) => res.json())
-      .then(console.log);
+      .then(() => console.log("Update complete"));
+    alert(`${id} Is Updated`);
   };
 
   const add = () => {
@@ -25,11 +28,12 @@ export const From = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         title,
-        /* other product data */
+        price,
       }),
     })
       .then((res) => res.json())
-      .then(console.log);
+      .then(() => console.log("Add successfully"));
+    alert(`${title} Is Added`);
   };
 
   const handleSave = () => {
@@ -38,16 +42,38 @@ export const From = () => {
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+    <Modal
+      isOpen={isOpen}
+      onClose={() => setIsOpen(false)}
+      className={styles.form}
+    >
       <h4>Edit Modal</h4>
-      <button onClick={()=> {
-        setTitle("")
-        setId(null)
-        setIsOpen(false)
-      }}>X</button>
-      <input value={title} onChange={(e) => setTitle(e.target.value)} />
+      <input
+        value={title}
+        placeholder="product Title"
+        onChange={(e) => setTitle(e.target.value)}
+        className={styles.titleInput}
+      />
+      <input
+        value={price}
+        placeholder="product Price"
+        onChange={(e) => setPrice(e.target.value)}
+        className={styles.priceInput}
+      />
       <br />
-      <button onClick={handleSave}>Save</button>
+      <div className={styles.finish}>
+        <button onClick={handleSave}>Save</button>
+        <button
+          onClick={() => {
+            setTitle("");
+            setPrice("");
+            setId("");
+            setIsOpen(false);
+          }}
+        >
+          Close
+        </button>
+      </div>
     </Modal>
   );
 };

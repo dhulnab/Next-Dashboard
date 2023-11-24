@@ -1,0 +1,47 @@
+.finish {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+.finish button {
+  background-color: rgb(45, 45, 45);
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 10px;
+  margin-left: 6px;
+  color: #fff;
+  cursor: pointer;
+}
+.finish button:hover {
+  background-color: rgb(18, 18, 18);
+}
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.titleInput {
+  width: 100%;
+  background-color: #eee;
+  outline: none;
+  border: 0.8px solid #bdbdbd;
+  font-size: 14px;
+  padding-left: 4px;
+  margin: 8px 0;
+  height: 30px;
+  border-radius: 6px;
+}
+.priceInput {
+  width: 100%;
+  background-color: #eee;
+  outline: none;
+  border: 0.8px solid #bdbdbd;
+  font-size: 14px;
+  padding-left: 4px;
+  margin: 8px 0;
+  height: 30px;
+  border-radius: 6px;
+}

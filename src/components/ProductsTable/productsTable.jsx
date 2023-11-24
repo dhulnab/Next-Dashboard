@@ -8,7 +8,8 @@ import { IoSearchOutline } from "react-icons/io5";
 
 export const ProductsTable = () => {
   const [products, setProducts] = useState([]);
-  const { setIsOpen, setId, setTitle } = useAppStore();
+  const { setIsOpen, setId, setTitle, setPrice ,id} = useAppStore();
+  
 
   const getProducts = () => {
     fetch("https://dummyjson.com/products")
@@ -16,6 +17,14 @@ export const ProductsTable = () => {
       .then((data) => {
         setProducts(data.products);
       });
+  };
+  const Delete = () => {
+    fetch(`https://dummyjson.com/products/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then(()=>console.log("Deleted successfully"));
+      alert(`${id} Is Deleted`);
   };
 
   useEffect(() => {
@@ -56,13 +65,14 @@ export const ProductsTable = () => {
                     className={styles.editBtn}
                     onClick={() => {
                       setId(el.id);
+                      setPrice(el.price );
                       setTitle(el.title);
                       setIsOpen(true);
                     }}
                   >
                     Edit
                   </button>
-                  <button className={styles.deleteBtn}>Delete</button>
+                  <button className={styles.deleteBtn} onClick={Delete}>Delete</button>
                 </td>
               </tr>
             ))}
