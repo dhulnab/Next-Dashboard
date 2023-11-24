@@ -19,7 +19,7 @@ export const From = () => {
     })
       .then((res) => res.json())
       .then(() => console.log("Update complete"));
-    alert(`${id} Is Updated`);
+    alert(`Product With ID: ${id} Is Updated`);
   };
 
   const add = () => {
